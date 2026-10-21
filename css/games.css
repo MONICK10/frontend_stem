@@ -1,0 +1,325 @@
+/* GAMES PAGE - Educational Card Design with Subject Icons */
+
+body {
+  background: linear-gradient(135deg, #0f172a 0%, #1a1f3a 100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  margin: 0;
+  padding: 1.5rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #22d3ee;
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #06b6d4, #22d3ee);
+  background-clip: text;
+  color: transparent;
+  margin: 0 0 0.5rem 0;
+}
+
+.gradient-text {
+  font-weight: 700;
+  background: linear-gradient(135deg, #06b6d4, #22d3ee);
+  background-clip: text;
+  color: transparent;
+}
+
+.header p {
+  font-size: 1.125rem;
+  margin: 0;
+  color: #cbd5e1;
+}
+
+.grade-selection {
+  padding: 0;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.grade-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  padding: 0;
+}
+
+.grade-card {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  border: 1.5px solid #475569;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grade-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(6, 182, 212, 0.25);
+  border-color: #06b6d4;
+}
+
+.grade-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.grade-info h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: #f1f5f9;
+}
+
+.grade-info i {
+  font-size: 2.5rem;
+  display: block;
+}
+
+/* Subject-specific icon colors */
+.grade-card .fa-square-root-variable,
+.grade-card .fa-calculator {
+  color: #06b6d4;
+}
+
+.grade-card .fa-atom {
+  color: #f97316;
+}
+
+.grade-card .fa-flask-vial,
+.grade-card .fa-flask {
+  color: #10b981;
+}
+
+.grade-card .fa-dna {
+  color: #d8b4fe;
+}
+
+.grade-card .fa-laptop-code,
+.grade-card .fa-code {
+  color: #22d3ee;
+}
+
+.grade-card .fa-leaf,
+.grade-card .fa-earth-americas {
+  color: #84cc16;
+}
+
+.grade-detail {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+/* Translate button */
+#translate-container {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 100;
+}
+
+#google_translate_element {
+  display: none;
+  margin-top: 0.5rem;
+}
+
+#translate-btn {
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+  color: white;
+  border: none;
+  padding: 0.625rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+}
+
+#translate-btn:hover {
+  background: linear-gradient(135deg, #22d3ee, #06b6d4);
+  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Back button */
+.back-btn {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+  color: white;
+  border: none;
+  padding: 0.625rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.back-btn:hover {
+  background: linear-gradient(135deg, #22d3ee, #06b6d4);
+  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .grade-container {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+  
+  .header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .grade-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .grade-card {
+    min-height: 180px;
+  }
+  
+  #translate-container {
+    top: 1rem;
+    right: 1rem;
+  }
+  
+  .back-btn {
+    top: 1rem;
+    left: 1rem;
+  }
+}
+  color:#555;
+
+}
+.start-quiz-btn{
+  margin-top: 1rem;
+  margin-right: 0;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: #4F46E5;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
+}
+.start-quiz-btn:hover{
+  background: #4338CA;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(67, 56, 202, 0.3);
+}
+.grade-detail p{
+  font-weight: bold;
+  color:#333;
+  text-align: left;
+}
+/* Position container top right */
+#translate-container {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+/* Hide the default Google dropdown until button is clicked */
+#google_translate_element {
+  display: none;
+  margin-top: 8px;
+}
+
+/* Style for your translate button */
+#translate-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background 0.2s ease-in-out;
+}
+/* Colored grade-card variants */
+.grade-card.yellow {
+  background-color: #f9ed81;
+}
+
+.grade-card.blue {
+  background-color: #81b3f9;
+}
+
+.grade-card.red {
+  background-color: #f98181;
+}
+
+.grade-card.green {
+  background-color: #81f9b3;
+}
+
+.grade-card.purple {
+  background-color: #d981f9;
+}
+
+.grade-card.orange {
+  background-color: #f9a981;
+}
+
+.grade-card.violet {
+  background-color: #b981f9;
+}
+
+#translate-btn:hover {
+  background: #388E3C;
+}
+.back-btn {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  background: #1976D2;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background 0.2s ease-in-out;
+}
+
+.back-btn:hover {
+  background: #0D47A1;
+}

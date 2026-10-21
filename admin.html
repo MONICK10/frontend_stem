@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Subscriptions</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="admin-header">
+      <div class="logo-section">
+        <i class="fas fa-lock"></i>
+        <h1>Admin Dashboard</h1>
+      </div>
+      <div class="header-actions">
+        <span id="adminName" class="admin-name">Loading...</span>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-container">
+    <!-- Navigation Tabs -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="pending-payments">
+        <i class="fas fa-hourglass"></i> Pending Payments
+      </button>
+      <button class="tab-btn" data-tab="all-payments">
+        <i class="fas fa-receipt"></i> All Payments
+      </button>
+      <button class="tab-btn" data-tab="subscriptions">
+        <i class="fas fa-check-circle"></i> Active Subscriptions
+      </button>
+    </div>
+
+    <!-- Pending Payments Section -->
+    <section id="pending-payments" class="tab-content active">
+      <div class="section-header">
+        <h2>Pending Payments</h2>
+        <button id="refreshPendingBtn" class="refresh-btn">
+          <i class="fas fa-sync-alt"></i> Refresh
+        </button>
+      </div>
+      <div id="pendingPaymentsContainer" class="table-wrapper">
+        <p class="loading">Loading pending payments...</p>
+      </div>
+    </section>
+
+    <!-- All Payments Section -->
+    <section id="all-payments" class="tab-content">
+      <div class="section-header">
+        <h2>All Payments</h2>
+        <div class="filter-group">
+          <select id="paymentStatusFilter" class="filter-select">
+            <option value="">All Status</option>
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+          </select>
+          <button id="refreshAllPaymentsBtn" class="refresh-btn">
+            <i class="fas fa-sync-alt"></i> Refresh
+          </button>
+        </div>
+      </div>
+      <div id="allPaymentsContainer" class="table-wrapper">
+        <p class="loading">Loading payments...</p>
+      </div>
+    </section>
+
+    <!-- Subscriptions Section -->
+    <section id="subscriptions" class="tab-content">
+      <div class="section-header">
+        <h2>Active Subscriptions</h2>
+        <button id="refreshSubscriptionsBtn" class="refresh-btn">
+          <i class="fas fa-sync-alt"></i> Refresh
+        </button>
+      </div>
+      <div id="subscriptionsContainer" class="table-wrapper">
+        <p class="loading">Loading subscriptions...</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal for action confirmation -->
+  <div id="confirmModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle">Confirm Action</h3>
+        <button class="close-btn" id="closeModalBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="modalMessage"></p>
+      </div>
+      <div class="modal-footer">
+        <button id="confirmBtn" class="btn btn-primary">Confirm</button>
+        <button id="cancelBtn" class="btn btn-secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

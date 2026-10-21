@@ -1,0 +1,218 @@
+/* CLASSES PAGE - Educational Card Design */
+
+body {
+  background: linear-gradient(135deg, #0f172a 0%, #1a1f3a 100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  margin: 0;
+  padding: 1.5rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #22d3ee;
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #06b6d4, #22d3ee);
+  background-clip: text;
+  color: transparent;
+  margin: 0 0 0.5rem 0;
+}
+
+.gradient-text {
+  font-weight: 700;
+  background: linear-gradient(135deg, #06b6d4, #22d3ee);
+  background-clip: text;
+  color: transparent;
+}
+
+.header p {
+  font-size: 1.125rem;
+  margin: 0;
+  color: #cbd5e1;
+}
+
+.class-selection {
+  padding: 0;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.class-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 0;
+}
+
+.class-card {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  border: 1.5px solid #475569;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.class-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(6, 182, 212, 0.25);
+  border-color: #06b6d4;
+}
+
+.class-card h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem 0;
+  color: #f1f5f9;
+}
+
+.class-card p {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Color variants for cards */
+.class-card.yellow {
+  background: linear-gradient(135deg, #064e3b 0%, #047857 100%);
+  border-color: #10b981;
+}
+
+.class-card.blue {
+  background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 100%);
+  border-color: #0ea5e9;
+}
+
+.class-card.red {
+  background: linear-gradient(135deg, #7f1d1d 0%, #b91c1c 100%);
+  border-color: #f87171;
+}
+
+.class-card.green {
+  background: linear-gradient(135deg, #064e3b 0%, #10b981 100%);
+  border-color: #6ee7b7;
+}
+
+.class-card.purple {
+  background: linear-gradient(135deg, #581c87 0%, #9333ea 100%);
+  border-color: #d8b4fe;
+}
+
+.class-card.orange {
+  background: linear-gradient(135deg, #7c2d12 0%, #ea580c 100%);
+  border-color: #fed7aa;
+}
+
+.class-card.violet {
+  background: linear-gradient(135deg, #6d28d9 0%, #8b5cf6 100%);
+  border-color: #c4b5fd;
+}
+
+/* Translate button */
+#translate-container {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 100;
+}
+
+#google_translate_element {
+  display: none;
+  margin-top: 0.5rem;
+}
+
+#translate-btn {
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+  color: white;
+  border: none;
+  padding: 0.625rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+}
+
+#translate-btn:hover {
+  background: linear-gradient(135deg, #22d3ee, #06b6d4);
+  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+  transform: translateY(-2px);
+}
+
+#translate-btn:hover {
+  background: #4338CA;
+  box-shadow: 0 6px 16px rgba(67, 56, 202, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Back button */
+.back-btn {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background: #10B981;
+  color: white;
+  border: none;
+  padding: 0.625rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.back-btn:hover {
+  background: #059669;
+  box-shadow: 0 6px 16px rgba(5, 150, 105, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+  
+  .header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .class-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .class-card {
+    min-height: 180px;
+  }
+  
+  #translate-container {
+    top: 1rem;
+    right: 1rem;
+  }
+  
+  .back-btn {
+    top: 1rem;
+    left: 1rem;
+  }
+}

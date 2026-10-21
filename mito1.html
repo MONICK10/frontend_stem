@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mitochondria Energy Factory 🔋</title>
+<link rel="stylesheet" href="css/mito1.css">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0d6efd">
+<link rel="apple-touch-icon" href="/images/logo1.png">
+</head>
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      {
+        pageLanguage: 'en',
+        includedLanguages: 'en,ta', // English & Odia
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      },
+      'google_translate_element'
+    );
+  }
+
+  // Toggle dropdown when button is clicked
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("translate-btn");
+    const el = document.getElementById("google_translate_element");
+
+    btn.addEventListener("click", () => {
+      el.style.display = (el.style.display === "none" || el.style.display === "") ? "block" : "none";
+    });
+  });
+</script>
+
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<body>
+<div class="game-container" id="game">
+  <div class="title">⚡ Mitochondria Energy Factory 🔋</div>
+   <div id="translate-container">
+  <button id="translate-btn">🌐 Translate</button>
+  <div id="google_translate_element"></div>
+</div>
+  <div class="scoreboard">ATP: <span id="score">0</span></div>
+  <div class="health-bar"><div class="health" id="health"></div></div>
+  <div class="instructions">
+    ⬅️ Move with Arrow Keys ➡️ <br>
+    ⚡ Catch Glucose (G) + O₂ for ATP Combo + Energy <br>
+    ☠️ Avoid Toxins or Health Drops!
+  </div>
+  <div class="mitochondrion" id="player"></div>
+  <div class="game-over" id="gameOver">💀 Game Over! Respawn to Continue</div>
+  <button class="restart-btn" onclick="restartGame()">🔄 Respawn / Next Round</button>
+
+<!-- ✅ New Finish Button -->
+<button class="finish-btn" id="finishBtn" onclick="finishTest()">
+  ✅ Finish Game
+</button>
+<button class="back-btn" onclick="goBack()">⬅ Back</button>
+</div>
+  
+
+<script src="js/config.js"></script>
+<script src="js/mito1.js" defer></script>
+</body>
+</html>

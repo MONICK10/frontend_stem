@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - STEMQUEST</title>
+  <link rel="stylesheet" href="css/signin.css">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0d6efd">
+  <link rel="apple-touch-icon" href="/images/logo1.png">
+</head>
+
+<!-- Google Translate -->
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      {
+        pageLanguage: 'en',
+        includedLanguages: 'en,ta',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      },
+      'google_translate_element'
+    );
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("translate-btn");
+    const el = document.getElementById("google_translate_element");
+    btn.addEventListener("click", () => {
+      el.style.display = (el.style.display === "none" || el.style.display === "") ? "block" : "none";
+    });
+  });
+</script>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<body>
+  <div class="auth-container">
+    <div class="auth-box">
+      <h1>Register</h1>
+
+      <div id="translate-container">
+        <button id="translate-btn">🌐 Translate</button>
+        <div id="google_translate_element"></div>
+      </div>
+
+      <form id="registerForm">
+        <input type="text" id="regUsername" placeholder="Username" required>
+        <input type="email" id="regEmail" placeholder="Email" required>
+        <input type="password" id="regPassword" placeholder="Password (min 6 chars)" required minlength="6">
+        <input type="password" id="regConfirmPassword" placeholder="Confirm Password" required>
+
+        <!-- Class dropdown -->
+        <label for="regClass">Class:</label>
+        <select id="regClass" required>
+          <option value="">Select Class</option>
+          <option value="6">6th</option>
+          <option value="7">7th</option>
+          <option value="8">8th</option>
+          <option value="9">9th</option>
+          <option value="10">10th</option>
+          <option value="11">11th</option>
+          <option value="12">12th</option>
+        </select>
+
+        <!-- School Name -->
+        <input type="text" id="regSchool" placeholder="School Name" required>
+
+        <!-- Role Selection -->
+        <label for="regRole">I am a:</label>
+        <select id="regRole" required>
+          <option value="">Select Role</option>
+          <option value="student">Student</option>
+          <option value="teacher">Teacher</option>
+          <option value="admin">Admin</option>
+        </select>
+
+        <button type="submit">Register</button>
+      </form>
+      
+      <p id="reg-msg" style="color: red; margin-top: 10px;"></p>
+      <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script>
+    // Redirect if already logged in
+    if (api.isTokenValid()) {
+      window.location.href = '/index.html';
+    }
+
+    // Handle registration form submission
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const username = document.getElementById('regUsername').value;
+      const email = document.getElementById('regEmail').value;
+      const password = document.getElementById('regPassword').value;
+      const confirmPassword = document.getElementById('regConfirmPassword').value;
+      const className = document.getElementById('regClass').value;
+      const schoolName = document.getElementById('regSchool').value;
+      const role = document.getElementById('regRole').value;
+      const errorMsg = document.getElementById('reg-msg');
+      const submitBtn = e.target.querySelector('button');
+
+      // Validate form
+      if (password !== confirmPassword) {
+        errorMsg.textContent = 'Passwords do not match';
+        errorMsg.style.color = 'red';
+        return;
+      }
+
+      if (password.length < 6) {
+        errorMsg.textContent = 'Password must be at least 6 characters';
+        errorMsg.style.color = 'red';
+        return;
+      }
+
+      try {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Registering...';
+        errorMsg.textContent = '';
+
+        const result = await api.register(username, email, password, className, schoolName, role);
+        console.log('✅ Registration successful:', result.user);
+        
+        errorMsg.style.color = 'green';
+        errorMsg.textContent = 'Registration successful! Redirecting...';
+        
+        // Role-based routing after registration
+        setTimeout(() => {
+          if (role === 'admin') {
+            // Admin goes to admin.html
+            window.location.href = '/admin.html';
+          } else if (role === 'student' || role === 'teacher') {
+            // Students and teachers go to index.html
+            window.location.href = '/index.html';
+          } else {
+            // Default redirect
+            window.location.href = '/index.html';
+          }
+        }, 1000);
+      } catch (error) {
+        errorMsg.style.color = 'red';
+        errorMsg.textContent = error.message;
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Register';
+      }
+    });
+  </script>
+</body>
+</html>
