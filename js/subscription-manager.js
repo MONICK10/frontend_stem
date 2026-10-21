@@ -100,23 +100,29 @@ class SubscriptionManager {
       }
 
       const data = await response.json();
-      
+
+      // GET /subscriptions/my-subscription returns the subscription document
+      // itself, not { subscription: ... }. Reading data.subscription alone
+      // was always undefined, so isActive never became true even for users
+      // with an approved subscription. Accept either shape.
+      const sub = data && data.subscription ? data.subscription : data;
+
       // Check if subscription exists and is active
-      if (data.subscription && data.subscription.status === 'active') {
+      if (sub && sub.status === 'active') {
         // Also check if not expired
-        const endDate = new Date(data.subscription.endDate);
+        const endDate = new Date(sub.endDate);
         const now = new Date();
-        
+
         if (endDate > now) {
-          return { 
-            isActive: true, 
-            subscription: data.subscription,
+          return {
+            isActive: true,
+            subscription: sub,
             daysRemaining: Math.ceil((endDate - now) / (1000 * 60 * 60 * 24))
           };
         }
       }
 
-      return { isActive: false, subscription: data.subscription };
+      return { isActive: false, subscription: sub || null };
     } catch (error) {
       console.error('Error checking subscription:', error);
       return { isActive: false, subscription: null };
